@@ -49,8 +49,8 @@ Y = "yank_joined"
 # Navigate buffers
 "C-," = "goto_previous_buffer"
 "C-." = "goto_next_buffer"
-"S-tab" = "goto_previous_buffer"
-"tab" = "goto_next_buffer"
+S-tab = "goto_previous_buffer"
+tab = "goto_next_buffer"
 C-b = "buffer_picker"
 
 # Selecting lines
@@ -74,6 +74,9 @@ C-left = ["jump_view_left"]
 C-r = "copy_between_registers"
 # Copy document path to system clipboard
 "C-A-c" = "@<C-r>%+"
+
+# Comments
+"C-/" = "toggle_comments"
 
 [keys.normal.space]
 # Append to end of line
