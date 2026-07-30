@@ -1,11 +1,11 @@
 theme = "github_dark"
 
 [editor]
-bufferline = "multiple" # Show open buffers at the top of the editor
-cursorline = true # Highlight all lines with a cursor
-default-yank-register = "+" # Sync clipboard with system clipboard
+bufferline = "multiple"          # Show open buffers at the top of the editor
+cursorline = true                # Highlight all lines with a cursor
+default-yank-register = "+"      # Sync clipboard with system clipboard
 end-of-line-diagnostics = "hint" # mimimum severity of diagnostics to render at the end of the line
-line-number = "relative" # Line numbers relative to cursor for navigation
+line-number = "relative"         # Line numbers relative to cursor for navigation
 
 [editor.cursor-shape]
 # Show a different cursor for each editor mode
@@ -22,13 +22,35 @@ skip-levels = 1 # Skip the first indent at column 0
 cursor-line = "hint" # Mimimum severity for diagnostic to show on line with the primary cursor
 other-lines = "hint" # Miminum severity for diagnostic to show on other lines
 
+[editor.lsp]
+display-inlay-hints = true
+
 [editor.soft-wrap]
 enable = true # Wrap text so long lines are shown
 
 [editor.statusline]
-left = ["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator", "file-encoding"] # Moves file encoding from `right`
-center = ["version-control", "spacer", "diagnostics"] # add version control status and moves diagnostics from `right`
-right = ["selections", "register", "position", "separator", "spacer", "position-percentage", "spacer"] # Adds line number percentage, removes diagnostics and encoding
+left = [
+  "mode",
+  "spinner",
+  "file-name",
+  "read-only-indicator",
+  "file-modification-indicator",
+  "file-encoding",
+] # Moves file encoding from `right`
+center = [
+  "version-control",
+  "spacer",
+  "diagnostics",
+] # add version control status and moves diagnostics from `right`
+right = [
+  "selections",
+  "register",
+  "position",
+  "separator",
+  "spacer",
+  "position-percentage",
+  "spacer",
+] # Adds line number percentage, removes diagnostics and encoding
 mode.normal = "NORM" # Instead of `NOR` for normal mode
 
 [editor.whitespace.render]
@@ -42,47 +64,90 @@ newline = "none"
 [keys.normal]
 esc = ["collapse_selection", "keep_primary_selection"]
 backspace = "delete_selection_noyank"
+del = "delete_selection_noyank"
 
 # Yank joined
 Y = "yank_joined"
 
 # Navigate buffers
-"C-," = "goto_previous_buffer"
-"C-." = "goto_next_buffer"
 S-tab = "goto_previous_buffer"
 tab = "goto_next_buffer"
-C-b = "buffer_picker"
 
 # Selecting lines
-X = "select_line_above" # Compliments `x` for adding line below to selection
+X = "select_line_above"       # Compliments `x` for adding line below to selection
 A-X = "extend_to_line_bounds" # Subsitute for `X`, complements `A-x` to shrink selection to line bounds
 
 # Search for next instance of selection and select it
-C-n = ["search_selection", "extend_search_next"]
-C-N = ["search_selection", "extend_search_prev"]
+A-n = ["search_selection", "extend_search_next"]
+A-N = ["search_selection", "extend_search_prev"]
 
 # Move and duplicate lines
-A-down = ["keep_primary_selection", "extend_to_line_bounds", "delete_selection", "goto_line_end", "paste_after"]
-A-up = ["keep_primary_selection", "extend_to_line_bounds", "delete_selection", "move_line_up", "goto_line_start", "paste_before"]
-S-A-down = ["keep_primary_selection", "extend_to_line_bounds", "yank", "goto_line_end", "paste_after", "collapse_selection"]
-S-A-up = ["keep_primary_selection", "extend_to_line_bounds", "yank", "move_line_up", "goto_line_start", "paste_before", "collapse_selection"]
+A-down = [
+  "keep_primary_selection",
+  "extend_to_line_bounds",
+  "delete_selection",
+  "goto_line_end",
+  "paste_after",
+]
+A-up = [
+  "keep_primary_selection",
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_line_up",
+  "goto_line_start",
+  "paste_before",
+]
+S-A-down = [
+  "keep_primary_selection",
+  "extend_to_line_bounds",
+  "yank",
+  "goto_line_end",
+  "paste_after",
+  "collapse_selection",
+]
+S-A-up = [
+  "keep_primary_selection",
+  "extend_to_line_bounds",
+  "yank",
+  "move_line_up",
+  "goto_line_start",
+  "paste_before",
+  "collapse_selection",
+]
 
 # Navigate views
 C-right = ["jump_view_right"]
 C-left = ["jump_view_left"]
+C-up = ["jump_view_up"]
+C-down = ["jump_view_down"]
 
 C-r = "copy_between_registers"
 # Copy document path to system clipboard
 "C-A-c" = "@<C-r>%+"
 
-# Comments
+# Comments (requires kitty keyboard protocol or similar to use `/`: https://sw.kovidgoyal.net/kitty/keyboard-protocol/)
 "C-/" = "toggle_comments"
 
 [keys.normal.space]
 # Append to end of line
-"," = ["save_selection", "goto_line_end", ":append-output echo ','", "jump_backward"]
-";" = ["save_selection", "goto_line_end", ":append-output echo ';'", "jump_backward"]
-"." = ["save_selection", "goto_line_end", ":append-output echo '.'", "jump_backward"]
+"," = [
+  "save_selection",
+  "goto_line_end",
+  ":append-output echo ','",
+  "jump_backward",
+]
+";" = [
+  "save_selection",
+  "goto_line_end",
+  ":append-output echo ';'",
+  "jump_backward",
+]
+"." = [
+  "save_selection",
+  "goto_line_end",
+  ":append-output echo '.'",
+  "jump_backward",
+]
 
 # Toggle options
 [keys.normal.space.t]
@@ -91,6 +156,7 @@ f = ":toggle-option auto-format"
 
 # Manage config
 [keys.normal.space.c]
+f = ":o ~/.config/fish/config.fish"
 l = ":o ~/.config/helix/languages.toml"
 o = ":config-open"
 r = ":config-reload"
@@ -114,6 +180,7 @@ X = ":buffer-close-others!"
 
 [keys.select]
 backspace = "delete_selection_noyank"
+del = "delete_selection_noyank"
 
 X = "select_line_above"
 A-X = "extend_to_line_bounds"
