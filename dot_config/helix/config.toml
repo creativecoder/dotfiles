@@ -162,6 +162,7 @@ l = ":o ~/.config/helix/languages.toml"
 o = ":config-open"
 t = ":o ~/.tmux.conf"
 r = ":config-reload"
+s = ":o ~/.config/starship.toml"
 y = ":o ~/.config/yazi/yazi.toml"
 
 # Manage file/buffer menu
