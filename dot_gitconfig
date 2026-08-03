@@ -1,0 +1,53 @@
+[user]
+	name = Grant Kinney
+	email = hi@grant.mk
+[core]
+	autocrlf = input
+	safecrlf = warn
+	excludesfile = ~/.gitignore_global
+	pager = delta
+[color]
+	ui = true
+# https://github.com/dandavison/delta
+[delta]
+	line-numbers = true
+	navigate = true
+	side-by-side = true
+[diff]
+	guitool = zed
+# https://git-scm.com/docs/git-difftool
+[difftool]
+	guiDefault = true
+	prompt = false
+	trustExitCode = false
+[difftool "zed"]
+	cmd = zed --wait --diff $LOCAL $REMOTE
+[interactive]
+	diffFilter = delta --color-only
+[merge]
+	conflictstyle = zdiff3 # delta
+	guitool = diffuse
+# https://git-scm.com/docs/git-mergetool
+[mergetool]
+	guiDefault = true
+	keepBackup = false
+	keepTemporaries = false
+	prompt = false
+[mergetool "diffuse"]
+	cmd = flatpak run io.github.mightycreak.Diffuse
+# Not yet implemented, see https://github.com/zed-industries/zed/issues/34813
+# [mergetool "zed"]
+	# cmd = zed --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[push]
+	default = simple
+[pull]
+	rebase = true
+[init]
+	defaultBranch = trunk
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[rerere]
+	enabled = true
