@@ -18,7 +18,7 @@ end
 # PATH
 # - Change path directly (`--path`) so that outdated paths aren't left in `$fish_user_paths`
 # - `--move` paths to front to ensure they override any system settings
-if "$GOPATH"
+if test -n "$GOPATH"
     fish_add_path --move --path "$GOPATH/bin"
 end
 
