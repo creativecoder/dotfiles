@@ -39,7 +39,7 @@ if status is-interactive
     end
 
     # Abbrevations
-    abbr --add cm chezmoi
+    abbr --add cz chezmoi
     abbr --add db distrobox
     abbr --add dokku ssh -t dokku
     abbr --add fm fzf-make
