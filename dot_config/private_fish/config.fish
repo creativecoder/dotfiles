@@ -40,6 +40,7 @@ if status is-interactive
 
     # Abbrevations
     abbr --add cz chezmoi
+    abbr --add czg chezmoi git
     abbr --add db distrobox
     abbr --add dokku ssh -t dokku
     abbr --add fm fzf-make
