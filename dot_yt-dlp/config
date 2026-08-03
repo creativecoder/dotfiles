@@ -1,0 +1,8 @@
+--embed-subs
+--write-auto-subs
+--merge-output-format mp4
+--embed-metadata
+--embed-thumbnail
+--embed-chapters
+--playlist-reverse
+-o "%(channel)s - s01e%(upload_date)s - %(title)s.%(ext)s"
