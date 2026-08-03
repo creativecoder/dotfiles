@@ -2,5 +2,7 @@
 show_hidden = true
 
 [preview]
-max_width = 1920
-max_height = 1920
+# Low preview resolution to work around ghostty bug
+# https://github.com/ghostty-org/ghostty/discussions/11909
+max_width = 600
+max_height = 600

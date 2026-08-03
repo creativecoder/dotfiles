@@ -157,9 +157,12 @@ f = ":toggle-option auto-format"
 # Manage config
 [keys.normal.space.c]
 f = ":o ~/.config/fish/config.fish"
+g = ":o ~/.config/ghostty/config.ghostty"
 l = ":o ~/.config/helix/languages.toml"
 o = ":config-open"
+t = ":o ~/.tmux.conf"
 r = ":config-reload"
+y = ":o ~/.config/yazi/yazi.toml"
 
 # Manage file/buffer menu
 [keys.normal.ret]
@@ -177,6 +180,13 @@ w = ":buffer-close"
 W = ":buffer-close!"
 x = ":buffer-close-others"
 X = ":buffer-close-others!"
+
+[keys.insert]
+# Navigate views
+C-right = ["jump_view_right"]
+C-left = ["jump_view_left"]
+C-up = ["jump_view_up"]
+C-down = ["jump_view_down"]
 
 [keys.select]
 backspace = "delete_selection_noyank"
