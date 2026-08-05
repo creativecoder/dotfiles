@@ -63,7 +63,7 @@ if status is-interactive
     # Aliases (simple functions)
     alias calibre-update="wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin install_dir=~/Applications bin_dir=~/.local/bin share_dir=~/.local/share"
     alias godot="flatpak run org.godotengine.Godot"
-    alias ll='eza -la --icons=auto --group-directories-first' # add `-a` to show hidden files/folders
+    alias ll='eza -lag --icons=auto --group-directories-first' # add `-a` to show hidden files/folders
     alias wp="export (grep 'DB_NAME' .env) && ~/.local/bin/wp"
 
     # Key bindings
